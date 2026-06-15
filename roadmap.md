@@ -165,7 +165,7 @@ Verify your environment:
 - [x] .NET 8 SDK installed → `8.0.127`
 - [x] Docker + Compose installed → `29.5.3` + `5.1.4`
 - [x] Git installed → `2.54.0`
-- [ ] GitHub repo created (optional for now)
+- [x] GitHub repo created → https://github.com/lynguyenhuu24/mobigate
 
 ---
 
@@ -173,14 +173,14 @@ Verify your environment:
 
 #### 1a — Solution scaffold + Docker Compose + health endpoint
 
-- [ ] Create solution: `dotnet new sln -n MobiGate`
-- [ ] Create projects: Domain, Application, Infrastructure, Api
-- [ ] Add NuGet packages: EF Core (Npgsql), Serilog, Swashbuckle
-- [ ] Write `docker-compose.yml` (PostgreSQL 16, Redis 7, RabbitMQ 3)
-- [ ] `Program.cs`: health endpoint at `GET /api/health`
-- [ ] `Program.cs`: Serilog, Problem Details middleware, Swagger
-- [ ] Seed data migration: 3 providers, 15 vehicles
-- [ ] Verify: `docker compose up` → `curl localhost:5000/api/health` = 200
+- [x] Create solution: `dotnet new sln -n MobiGate`
+- [x] Create projects: Domain, Application, Infrastructure, Api
+- [x] Add NuGet packages: EF Core (Npgsql), Serilog, Swashbuckle
+- [x] Write `docker-compose.yml` (PostgreSQL 16, Redis 7, RabbitMQ 3)
+- [x] `Program.cs`: health endpoint at `GET /api/health`
+- [x] `Program.cs`: Serilog, Problem Details middleware, Swagger
+- [x] Seed data migration: 3 providers, 15 vehicles
+- [x] Verify: `docker compose up` → `curl localhost:5000/api/health` = 200 (tested via Swagger UI) 🔗
 
 #### 1b — Identity & Access
 

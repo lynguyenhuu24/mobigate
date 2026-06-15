@@ -33,6 +33,8 @@ This repository is **empty / newly initialized**. No toolchain, language, framew
 ## CONVENTIONS
 
 - **Keep roadmap.md up to date**: After completing any task, update `roadmap.md` — mark checkboxes `[x]`, add notes, or adjust plan as needed. The roadmap is the single source of truth for project progress.
+- **Use controllers, not minimal APIs**: All API endpoints go in Controller classes under `MobiGate.Api/Controllers/`. No `MapGet`/`MapPost` inline handlers.
+- **Use primary constructors**: All classes use primary constructor syntax (`class Foo(IBar bar)`) where dependency injection is needed.
 
 ## ANTI-PATTERNS
 
