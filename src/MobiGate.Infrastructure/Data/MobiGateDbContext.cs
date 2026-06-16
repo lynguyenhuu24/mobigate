@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MobiGate.Domain.Entities;
+using MobiGate.Domain.Enums;
 
 namespace MobiGate.Infrastructure.Data;
 
@@ -9,6 +10,7 @@ public class MobiGateDbContext : DbContext
 
     public DbSet<Provider> Providers => Set<Provider>();
     public DbSet<Vehicle> Vehicles => Set<Vehicle>();
+    public DbSet<User> Users => Set<User>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -36,6 +38,18 @@ public class MobiGateDbContext : DbContext
                   .HasForeignKey(e => e.ProviderId);
             entity.HasIndex(e => e.Status);
             entity.HasIndex(e => new { e.Type, e.Status });
+        });
+
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Email).HasMaxLength(256).IsRequired();
+            entity.HasIndex(e => e.Email).IsUnique();
+            entity.Property(e => e.PasswordHash).HasMaxLength(500).IsRequired();
+            entity.Property(e => e.Role)
+                  .HasConversion<string>()
+                  .HasMaxLength(20)
+                  .IsRequired();
         });
     }
 }

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MobiGate.Domain.Entities;
+using MobiGate.Domain.Enums;
 
 namespace MobiGate.Infrastructure.Data;
 
@@ -40,12 +41,36 @@ public static class SeedData
         new() { Id = Guid.Parse("f8a9b0c1-d2e3-4567-fabc-678901234567"), Name = "TaxiGo Lux",   PlateNumber = "TG-005", Type = VehicleType.Car, Status = VehicleStatus.Available,  Latitude = 10.8324m,  Longitude = 106.6412m, PricePerMinute = 0.80m, ProviderId = TaxiGoId },
     ];
 
+    private static readonly Guid AdminUserId = Guid.Parse("00000000-0000-0000-0000-000000000001");
+    private static readonly Guid MemberUserId = Guid.Parse("00000000-0000-0000-0000-000000000002");
+
+    public static readonly User[] Users =
+    [
+        new()
+        {
+            Id = AdminUserId,
+            Email = "admin@mobigate.io",
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin!123"),
+            Role = UserRole.Admin,
+            CreatedAt = DateTime.UtcNow
+        },
+        new()
+        {
+            Id = MemberUserId,
+            Email = "user@mobigate.io",
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword("User!123"),
+            Role = UserRole.Member,
+            CreatedAt = DateTime.UtcNow
+        }
+    ];
+
     public static async Task InitializeAsync(MobiGateDbContext db)
     {
         if (await db.Providers.AnyAsync()) return; // already seeded
 
         db.Providers.AddRange(Providers);
         db.Vehicles.AddRange(Vehicles);
+        db.Users.AddRange(Users);
         await db.SaveChangesAsync();
     }
 }
