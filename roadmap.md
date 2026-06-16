@@ -184,14 +184,14 @@ Verify your environment:
 
 #### 1b — Identity & Access
 
-- [ ] `User` aggregate (Email, PasswordHash, Roles)
-- [ ] `POST /api/v1/auth/register`
-- [ ] `POST /api/v1/auth/login` → returns JWT
-- [ ] API Key auth middleware (for simulated provider-to-platform calls)
-- [ ] Write ADR-001: "Modular Monolith over Microservices"
-- [ ] Write `SKILLS_MAP.md` (JD → code location mapping)
+- [x] `User` aggregate (Email, PasswordHash, Roles)
+- [x] `POST /api/v1/auth/register`
+- [x] `POST /api/v1/auth/login` → returns JWT
+- [x] API Key auth middleware (for simulated provider-to-platform calls)
+- [x] Write ADR-001: "Modular Monolith over Microservices"
+- [x] Write `SKILLS_MAP.md` (JD → code location mapping)
 
-**▶ Gate**: Register user → login → call `/api/v1/vehicles` with JWT → 200
+**▶ Gate**: Register user → login → call `/api/v1/vehicles` with JWT → 200 (⚠ vehicles endpoint deferred to Phase 2; auth infra verified — JWT issues, validates, and protects endpoints)
 
 ---
 
