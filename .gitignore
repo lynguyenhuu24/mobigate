@@ -42,3 +42,12 @@ appsettings.Local.json
 
 # OpenCode
 .omo/
+
+# Playwright MCP test artifacts
+.playwright-mcp/
+
+# API test log files
+api_*.txt
+
+# Screenshots
+*.png
